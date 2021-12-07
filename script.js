@@ -1,14 +1,14 @@
 'use strict';
-let attempts;
-let number;
+let attempts = 0; //число попыток
+let number = Math.floor(Math.random() * 100);
 
 const isNumber = function(num) {
     return !isNaN(parseFloat(num)) && isFinite(num); //проверка на число
 };
 
 function resetGame() {
-    attempts = 10; //число попыток
-    number = Math.floor(Math.random() * 100);
+   attempts = 10; //число попыток
+   number = Math.floor(Math.random() * 100);
 }
 
 function start(Number) {
