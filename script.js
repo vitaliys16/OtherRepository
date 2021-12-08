@@ -1,7 +1,7 @@
 'use strict';
 let attempts = 0; //число попыток
 let number = Math.floor(Math.random() * 100);
-console.log(number);
+
 const isNumber = function(num) {
     return !isNaN(parseFloat(num)) && isFinite(num); //проверка на число
 };
@@ -38,10 +38,7 @@ function start(Number) {
             } else if (userNumber === " ") {
                 alert('Введи число!');
                 return twoB();
-            } /*else if (userNumber === null) {
-                alert('Игра окончена');
-                return;
-            } */else if (userNumber === 0) {
+            } else if (userNumber === 0) {
                 twoB();
                 return;
             }
