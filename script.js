@@ -1,7 +1,7 @@
 'use strict';
 let attempts = 0; //число попыток
 let number = Math.floor(Math.random() * 100);
-
+console.log(number);
 const isNumber = function(num) {
     return !isNaN(parseFloat(num)) && isFinite(num); //проверка на число
 };
@@ -17,14 +17,17 @@ function start(Number) {
 
         if (attempts > 0) {
 
-            let userNumber = +prompt("Угадай число от 1 до 100");
-            
+            let userNumber = prompt("Угадай число от 1 до 100");
+            if (userNumber === null) {
+                alert('Игра окончена');
+                return;
+            }
             while(!isNumber(userNumber)) {
                 alert('Введи число!');
-                return twoB();
+                return twoB(); //рекурсия - twoB вызывает twoB (т.е. саму себя)
             }
 
-            if (userNumber > Number) {
+            if (+userNumber > Number) {
                 attempts--;
                 alert('Загаданное число меньше. Осталось попыток: ' + attempts);
                 return twoB();
@@ -35,8 +38,11 @@ function start(Number) {
             } else if (userNumber === " ") {
                 alert('Введи число!');
                 return twoB();
-            } else if (userNumber === 0 || userNumber == "null") {
+            } /*else if (userNumber === null) {
                 alert('Игра окончена');
+                return;
+            } */else if (userNumber === 0) {
+                twoB();
                 return;
             }
             let restart = confirm('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?');
@@ -48,7 +54,7 @@ function start(Number) {
                     alert('Игра окончена');
                 }
 
-        } else if (attempts == 0) {
+        } else if (attempts === 0) {
 
             let restart = confirm('Попытки закончились, хотите сыграть еще?');
                 if (restart) {
